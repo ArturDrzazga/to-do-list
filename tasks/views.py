@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
-from .models import Task
+from .models import Task, Tag
 
 
 class TasksListView(generic.ListView):
@@ -11,11 +12,17 @@ class TasksListView(generic.ListView):
 
 class TasksCreateView(generic.CreateView):
     model = Task
-    success_url = "tasks/task_list"
+    success_url = reverse_lazy("tasks:tasks-list")
     fields = "__all__"
 
 
 class TagsListView(generic.ListView):
-    model = Task
+    model = Tag
     template_name = "tasks/tags_list.html"
     paginate_by = 5
+
+
+class TagsCreateView(generic.CreateView):
+    model = Tag
+    success_url = reverse_lazy("tasks:tags-list")
+    fields = "__all__"

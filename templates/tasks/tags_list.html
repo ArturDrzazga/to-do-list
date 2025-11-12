@@ -3,16 +3,16 @@
 {% block content %}
   <div style="display: flex; justify-content: space-between; align-items: center;">
     <h1>Tags</h1>
-    <a class="btn btn-primary" href="#">Add tag</a>
+    <a class="btn btn-primary" href="{% url "tasks:tags-create" %}">Add tag</a>
 </div>
-  {% if tags_list %}
-    <table>
+  {% if tag_list %}
+    <table class="table">
     <tr>
       <td>Name</td>
       <td>Update</td>
       <td>Delete</td>
     </tr>
-      {% for tag in tags_list %}
+      {% for tag in tag_list %}
       <tr>
         <td>
           {{ tag.name }}

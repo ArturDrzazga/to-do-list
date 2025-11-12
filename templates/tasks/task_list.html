@@ -5,6 +5,25 @@
     <h1>TODO list</h1>
     <a class="btn btn-primary" href="{% url "tasks:tasks-create" %}">Add task</a>
 </div>
-
+  {% if tasks_list %}
+    {% for task in tasks_list %}
+      <p>
+        {{ task.content }} {% if task.is_done == True %} Done {% else %} Not done {% endif %}
+      </p>
+      <p>
+        Created: {{ task.datetime }} {% if task.deadline %} Deadline: {{ task.deadline }} {% endif %}
+      </p>
+      <p>
+        Tags:
+        {% for tag in task.tags.all %}
+          {{ tag.name }}
+        {% endfor %}
+        <a href="#">Update</a>
+        <a href="#">Delete</a>
+      </p>
+    {% endfor %}
+  {% else %}
+    <p>You don't have any tasks to do</p>
+  {% endif %}
 
 {% endblock %}

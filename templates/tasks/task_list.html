@@ -15,6 +15,15 @@
           <span class="text-success">Done</span>
         {% else %}
           <span class="text-danger">Not done</span> {% endif %}
+        <a style="float:right;" href="{% url "tasks:toggle-task" pk=task.pk %}"
+          class="btn
+               {% if task.is_done %}btn-secondary{% else %}btn-success{% endif %}">
+          {% if task.is_done %}
+            Undo
+          {% else %}
+            Complete
+          {% endif %}
+        </a>
       </p>
 
       <p class="small">

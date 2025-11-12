@@ -37,6 +37,7 @@ class ToggleTaskView(View):
 
         return redirect("tasks:tasks-list")
 
+
 class TagsListView(generic.ListView):
     model = Tag
     template_name = "tasks/tags_list.html"

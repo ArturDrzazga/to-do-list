@@ -13,3 +13,9 @@ class TasksCreateView(generic.CreateView):
     model = Task
     success_url = "tasks/task_list"
     fields = "__all__"
+
+
+class TagsListView(generic.ListView):
+    model = Task
+    template_name = "tasks/tags_list.html"
+    paginate_by = 5
